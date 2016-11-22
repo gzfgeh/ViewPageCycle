@@ -19,6 +19,8 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import java.util.ArrayList;
 import java.util.List;
 
+import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
+
 /**
  * 广告图片自动轮播控件
  * 
@@ -126,12 +128,13 @@ public class ImageCycleView extends LinearLayout {
 		mImageViews = new ImageView[imageCount];
 		for (int i = 0; i < imageCount; i++) {
 			mImageView = new ImageView(mContext);
-			int imageParams = (int) (mScale * 20 + 0.5f);// XP与DP转换，适应不同分辨率
+			int imageParams = (int) (mScale * 8 + 0.5f);// XP与DP转换，适应不同分辨率
 			int imagePadding = (int) (mScale * 5 + 0.5f);
-			LayoutParams layout = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-			layout.setMargins(0, 0, 0, 0);
+			LayoutParams layout = new LayoutParams(imageParams, imageParams);
+			layout.setMargins(imagePadding,0,imagePadding,0);
 			mImageView.setLayoutParams(layout);
 			mImageViews[i] = mImageView;
+			//mImageView.setPadding(imagePadding, imagePadding, imagePadding, imagePadding);
 			if (i == 0) {
 				mImageViews[i].setBackgroundResource(R.drawable.icon_point_pre);
 			} else {
@@ -290,8 +293,8 @@ public class ImageCycleView extends LinearLayout {
 
 			Glide.with(mContext)
                     .load(imageUrl)
-                    .placeholder(R.drawable.imageloaderfauil)
-                    .error(R.drawable.imageloaderfauil)
+                    .placeholder(R.drawable.ic_loading)
+                    .error(R.drawable.ic_load_fail)
 					.crossFade()
 					.diskCacheStrategy(DiskCacheStrategy.ALL)
                     .into(imageView);
