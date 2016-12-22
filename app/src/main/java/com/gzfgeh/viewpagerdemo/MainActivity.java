@@ -40,10 +40,22 @@ public class MainActivity extends AppCompatActivity {
         data.add(info2);
 
         BannerInfo info3 = new BannerInfo();
-        info.setImg("http://img.my.csdn.net/uploads/201508/05/1438760757_3588.jpg");
-        info.setLink("http://img.my.csdn.net/uploads/201508/05/1438760757_3588.jpg");
-        info.setOt(0);
+        info3.setImg("http://img.my.csdn.net/uploads/201508/05/1438760757_3588.jpg");
+        info3.setLink("http://img.my.csdn.net/uploads/201508/05/1438760757_3588.jpg");
+        info3.setOt(0);
         data.add(info3);
+
+        BannerInfo info4 = new BannerInfo();
+        info4.setImg("http://img.my.csdn.net/uploads/201508/05/1438760758_6667.jpg");
+        info4.setLink("http://img.my.csdn.net/uploads/201508/05/1438760758_6667.jpg");
+        info4.setOt(0);
+        data.add(info4);
+
+        BannerInfo info5 = new BannerInfo();
+        info5.setImg("http://img.my.csdn.net/uploads/201508/05/1438760757_3588.jpg");
+        info5.setLink("http://img.my.csdn.net/uploads/201508/05/1438760757_3588.jpg");
+        info5.setOt(0);
+        data.add(info5);
 
 
         imageCycleView.setImageResources(data, new ImageCycleView.ImageCycleViewListener() {

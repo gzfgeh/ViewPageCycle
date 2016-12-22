@@ -190,7 +190,7 @@ public class ImageCycleView extends LinearLayout {
 			if (mImageViews != null) {
 				// 下标等于图片列表长度说明已滚动到最后一张图片,重置下标
 				if ((++mImageIndex) == mImageViews.length + 1) {
-					mImageIndex = 1;
+					//mImageIndex = 1;
 				}
 				mBannerPager.setCurrentItem(mImageIndex);
 			}
@@ -257,7 +257,7 @@ public class ImageCycleView extends LinearLayout {
 			mContext = context;
 			mAdList = adList;
 			mImageCycleViewListener = imageCycleViewListener;
-			mImageViewCacheList = new ArrayList<ImageView>();
+			mImageViewCacheList = new ArrayList<>();
 		}
 
 		@Override
