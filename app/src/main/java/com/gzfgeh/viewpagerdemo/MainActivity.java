@@ -28,13 +28,13 @@ public class MainActivity extends AppCompatActivity {
         imageCycleView = (ImageCycleView) findViewById(R.id.image_cycle_view);
         List<BannerInfo> data = new ArrayList<>();
         BannerInfo info = new BannerInfo();
-        info.setImg("http://img.my.csdn.net/uploads/201508/05/1438760758_3497.jpg");
+        info.setImg("http://pic.58pic.com/58pic/14/27/45/71r58PICmDM_1024.jpg");
         info.setLink("http://img.my.csdn.net/uploads/201508/05/1438760758_3497.jpg");
         info.setOt(0);
         data.add(info);
 
         BannerInfo info2 = new BannerInfo();
-        info2.setImg("http://img.my.csdn.net/uploads/201508/05/1438760758_6667.jpg");
+        info2.setImg("http://img.my.csdn.net/uploads/201508/05/1438760757_3588.jpg");
         info2.setLink("http://img.my.csdn.net/uploads/201508/05/1438760758_6667.jpg");
         info2.setOt(0);
         data.add(info2);

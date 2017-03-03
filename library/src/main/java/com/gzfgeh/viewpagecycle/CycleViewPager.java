@@ -51,10 +51,12 @@ public class CycleViewPager extends ViewPager {
             }
             if(arg0 == ViewPager.SCROLL_STATE_IDLE) {
                 if(position == mAdapter.getCount() - 1) {
-                    setCurrentItem( 1, false);
+                    setCurrentItem(1, false);
                 }
                 else if(position == 0) {
                     setCurrentItem(mAdapter.getCount() - 2, false);
+                }else{
+
                 }
             }
         }

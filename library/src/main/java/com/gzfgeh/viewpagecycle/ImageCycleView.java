@@ -14,11 +14,13 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.Priority;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
 import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 
 /**
@@ -189,10 +191,10 @@ public class ImageCycleView extends LinearLayout {
 		public void run() {
 			if (mImageViews != null) {
 				// 下标等于图片列表长度说明已滚动到最后一张图片,重置下标
-				if ((++mImageIndex) == mImageViews.length + 1) {
-					//mImageIndex = 1;
-				}
-				mBannerPager.setCurrentItem(mImageIndex);
+//				if ((++mImageIndex) == mImageViews.length + 1) {
+//					mImageIndex = 1;
+//				}
+				mBannerPager.setCurrentItem(++mImageIndex);
 			}
 		}
 	};
@@ -276,30 +278,34 @@ public class ImageCycleView extends LinearLayout {
 			ImageView imageView = null;
 			if (mImageViewCacheList.isEmpty()) {
 				imageView = new ImageView(mContext);
-				imageView.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
+				imageView.setLayoutParams(new LayoutParams(MATCH_PARENT, MATCH_PARENT));
+				//华为手机不显示，修改整个参数
 				imageView.setScaleType(ImageView.ScaleType.FIT_XY);
 			} else {
 				imageView = mImageViewCacheList.remove(0);
 			}
+			imageView.setTag(R.id.cycle_image_tag_id, imageUrl);
 			// 设置图片点击监听
 			imageView.setOnClickListener(new OnClickListener() {
 
 				@Override
 				public void onClick(View v) {
-					int p = (int) v.getTag(R.id.cycle_image_tag_id);
-					mImageCycleViewListener.onImageClick(mAdList.get(p),p, v);
+					//int p = (int) v.getTag(R.id.cycle_image_tag_id);
+					mImageCycleViewListener.onImageClick(mAdList.get(position),position, v);
 				}
 			});
 
-			Glide.with(mContext)
-                    .load(imageUrl)
-                    .placeholder(R.drawable.ic_loading)
-                    .error(R.drawable.ic_load_fail)
-					.crossFade()
-					.diskCacheStrategy(DiskCacheStrategy.ALL)
-                    .into(imageView);
 
-			imageView.setTag(R.id.cycle_image_tag_id, position);
+			if (imageView.getTag(R.id.cycle_image_tag_id) == imageUrl){
+				Glide.with(mContext)
+						.load(imageUrl)
+						.placeholder(R.drawable.ic_loading)
+						.error(R.drawable.ic_load_fail)
+						.crossFade()
+						.diskCacheStrategy(DiskCacheStrategy.ALL)
+						.priority(Priority.HIGH)
+						.into(imageView);
+			}
 			container.addView(imageView);
 			return imageView;
 		}
