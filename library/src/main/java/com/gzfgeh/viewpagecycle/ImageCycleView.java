@@ -299,8 +299,8 @@ public class ImageCycleView extends LinearLayout {
 			if (imageView.getTag(R.id.cycle_image_tag_id) == imageUrl){
 				Glide.with(mContext)
 						.load(imageUrl)
-						.placeholder(R.drawable.ic_loading)
-						.error(R.drawable.ic_load_fail)
+						.placeholder(R.drawable.default_swipe)
+						.error(R.drawable.default_swipe)
 						.crossFade()
 						.diskCacheStrategy(DiskCacheStrategy.ALL)
 						.priority(Priority.HIGH)
