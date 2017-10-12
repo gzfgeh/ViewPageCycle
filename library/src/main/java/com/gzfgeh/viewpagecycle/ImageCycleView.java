@@ -139,9 +139,9 @@ public class ImageCycleView extends LinearLayout {
 			mImageViews[i] = mImageView;
 			//mImageView.setPadding(imagePadding, imagePadding, imagePadding, imagePadding);
 			if (i == 0) {
-				mImageViews[i].setBackgroundResource(R.drawable.icon_point_pre);
-			} else {
 				mImageViews[i].setBackgroundResource(R.drawable.icon_point);
+			} else {
+				mImageViews[i].setBackgroundResource(R.drawable.icon_point_pre);
 			}
 			mGroup.addView(mImageViews[i]);
 
@@ -226,10 +226,10 @@ public class ImageCycleView extends LinearLayout {
 			// 设置图片滚动指示器背景
 			mImageIndex = index;
 			index -= 1;
-			mImageViews[index].setBackgroundResource(R.drawable.icon_point_pre);
+			mImageViews[index].setBackgroundResource(R.drawable.icon_point);
 			for (int i = 0; i < mImageViews.length; i++) {
 				if (index != i) {
-					mImageViews[i].setBackgroundResource(R.drawable.icon_point);
+					mImageViews[i].setBackgroundResource(R.drawable.icon_point_pre);
 				}
 			}
 
@@ -300,8 +300,8 @@ public class ImageCycleView extends LinearLayout {
 			if (imageView.getTag(R.id.cycle_image_tag_id) == imageUrl){
 				Glide.with(mContext)
 						.load(imageUrl)
-						.placeholder(R.drawable.default_swipe)
-						.error(R.drawable.default_swipe)
+						.placeholder(R.drawable.zhanwei)
+						.error(R.drawable.zhanwei)
 						.crossFade()
 						.diskCacheStrategy(DiskCacheStrategy.ALL)
 						.priority(Priority.HIGH)
